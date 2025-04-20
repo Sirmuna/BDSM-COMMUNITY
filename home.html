@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>BDSM COMMUNITY - Member Home</title>
+    <meta name="description" content="BDSM Community member dashboard and protected content" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="apple-touch-icon" href="assets/images/favicon-red.jpg" />
+    <link rel="shortcut icon" href="assets/images/favicon-red.jpg" />
+
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Google Font (font-family: 'Open Sans', sans-serif;) -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet" />
+    <!-- Google Font (font-family: 'Poppins', sans-serif;) -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,500,600,700" rel="stylesheet" />
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/plugins.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/custom.css" />
+    <link rel="stylesheet" href="assets/css/auth.css" />
+
+    <style>
+      /* Dashboard specific styles */
+      .dashboard-welcome {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+      }
+      
+      .dashboard-welcome h2 {
+        color: #333;
+        margin-bottom: 15px;
+      }
+      
+      .dashboard-stats {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -15px;
+      }
+      
+      .dashboard-stat {
+        flex: 1;
+        min-width: 200px;
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+      
+      .dashboard-stat:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      .dashboard-stat i {
+        font-size: 32px;
+        color: #e73c3e;
+        margin-bottom: 15px;
+      }
+      
+      .dashboard-stat h3 {
+        font-size: 24px;
+        margin-bottom: 5px;
+      }
+      
+      .dashboard-stat p {
+        color: #666;
+        margin-bottom: 0;
+      }
+      
+      .member-content {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+      }
+      
+      .member-content h3 {
+        color: #333;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eee;
+      }
+      
+      .profile-card {
+        display: flex;
+        align-items: center;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+      
+      .profile-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 20px;
+        border: 3px solid #e73c3e;
+      }
+      
+      .profile-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      .profile-info h4 {
+        margin-bottom: 5px;
+      }
+      
+      .profile-info p {
+        color: #666;
+        margin-bottom: 10px;
+      }
+      
+      .profile-actions {
+        margin-top: 10px;
+      }
+      
+      .profile-actions a {
+        display: inline-block;
+        margin-right: 10px;
+        font-size: 14px;
+        color: #e73c3e;
+      }
+      
+      .profile-actions a:hover {
+        text-decoration: underline;
+      }
+      
+      .exclusive-content {
+        margin-top: 30px;
+      }
+      
+      .content-card {
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+      }
+      
+      .content-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      .content-card-image {
+        height: 200px;
+        overflow: hidden;
+      }
+      
+      .content-card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+      
+      .content-card:hover .content-card-image img {
+        transform: scale(1.05);
+      }
+      
+      .content-card-body {
+        padding: 20px;
+      }
+      
+      .content-card-body h5 {
+        margin-bottom: 10px;
+      }
+      
+      .content-card-body p {
+        color: #666;
+        margin-bottom: 15px;
+      }
+      
+      .content-card-footer {
+        padding: 15px 20px;
+        background-color: #f8f9fa;
+        border-top: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .content-card-footer .date {
+        color: #888;
+        font-size: 14px;
+      }
+      
+      .content-card-footer .category {
+        background-color: #e73c3e;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 3px;
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+      
+      .auth-required-notice {
+        background-color: #f8d7da;
+        color: #721c24;
+        padding: 20px;
+        border-radius: 5px;
+        margin: 50px auto;
+        max-width: 600px;
+        text-align: center;
+      }
+      
+      .auth-required-notice h3 {
+        margin-bottom: 15px;
+      }
+      
+      .auth-required-notice .tm-button {
+        margin-top: 15px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Preloader -->
+    <div class="tm-preloader">
+      <svg width="300" height="300" viewBox="0 0 485 528" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M207.9,515.3H13V9h194.9c53.4,0,100.4,10.6,139.7,31.4c39.7,21.1,70.7,51.2,92,89.5
+            c21.1,38,31.9,82.2,31.9,131.2c0,49-10.7,93.3-31.8,131.5v0c-21.3,38.5-52.3,69-92.2,90.5C307.8,504.5,260.9,515.3,207.9,515.3z
+            M43,485.3h164.9c48,0,90.1-9.6,125.3-28.5c34.8-18.7,61.7-45.2,80.2-78.6c18.6-33.7,28.1-73.1,28.1-117
+            c0-43.9-9.5-83.1-28.1-116.7c-18.5-33.2-45.3-59.3-79.8-77.6C298.6,48.4,256.3,39,207.9,39H43V485.3z M197.8,412.2h-69.6V110h69.6
+            c48.7,0,87.4,13.4,115.1,39.9c27.9,26.6,42,64.1,42,111.2c0,47.2-14.1,84.6-42,111.2l0,0C285.2,398.8,246.5,412.2,197.8,412.2z
+            M158.2,382.2h39.6c40.7,0,72.5-10.6,94.4-31.6l0,0c22-21,32.7-50.3,32.7-89.5c0-39.2-10.7-68.5-32.7-89.5
+            c-21.9-20.9-53.7-31.6-94.4-31.6h-39.6V382.2z"/>
+      </svg>
+    </div>
+    <!--// Preloader -->
+
+    <!-- Authentication Check Container (will be shown if not logged in) -->
+    <div id="auth-required-container" class="auth-required-notice" style="display: none;">
+      <h3>Member Access Required</h3>
+      <p>This page contains exclusive content for BDSM COMMUNITY members. Please log in or create an account to continue.</p>
+      <a href="index.html" class="tm-button">Login / Register</a>
+    </div>
+
+    <!-- Main Content Container (will be shown if logged in) -->
+    <div id="main-content-container">
+      <div id="wrapper" class="wrapper">
+        <!-- Header Area -->
+        <div class="header">
+          <!-- Header Top Area -->
+          <div class="header-toparea">
+            <div class="container">
+              <div class="row align-items-center">
+                <div class="col-md-7 col-sm-6 col-12">
+                  <div class="header-topinfo">
+                    <ul>
+                      <li>
+                        Email us :
+                        <a href="mailto://bdsmcommunity@gmail.com">bdsmcommunity@gmail.com</a>
+                      </li>
+                      <li>
+                        Call us :
+                        <a href="tel://+44-7497-431388">44-7497-431388</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-5 col-sm-6 col-12">
+                  <div class="header-topbutton">
+                    <!-- This will be replaced by user menu via JavaScript -->
+                    <a href="contact.html" class="tm-button tm-button-white">Contact US</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--// Header Top Area -->
+
+          <!-- Header Bottom Area -->
+          <div class="header-bottomarea">
+            <div class="container">
+              <div class="header-bottominner">
+                <div class="header-logo">
+                  <a href="home.html">
+                    <img src="assets/images/logo/logo-red.png" alt="BDSM logo" />
+                  </a>
+                </div>
+                <nav class="tm-navigation">
+                  <ul>
+                    <li><a href="about-us.html">About</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li class="tm-navigation-dropdown">
+                      <a href="blog.html">Blog</a>
+                      <ul>
+                        <li><a href="blog.html">Blog Right Sidebar</a></li>
+                        <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
+                        <li><a href="blog-2-column.html">Blog 2 Column</a></li>
+                        <li><a href="blog-3-column.html">Blog 3 Column</a></li>
+                        <li>
+                          <a href="blog-details.html">Blog Details</a>
+                          <ul>
+                            <li><a href="blog-details.html">Right Sidebar</a></li>
+                            <li><a href="blog-details-left-sidebar.html">Left Sidebar</a></li>
+                            <li><a href="blog-details-audio.html">Audio Post</a></li>
+                            <li><a href="blog-details-video.html">Video Post</a></li>
+                            <li><a href="blog-details-gallery.html">Gallery Post</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                  </ul>
+                </nav>
+                <div class="header-icons">
+                  <ul>
+                    <li>
+                      <a href="cart.html"><i class="zmdi zmdi-shopping-cart"></i></a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="header-searchbox">
+                  <div class="header-searchinner">
+                    <form action="#" class="header-searchform">
+                      <input type="text" placeholder="Enter search keyword.." />
+                    </form>
+                    <button class="search-close">
+                      <i class="zmdi zmdi-close"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="header-mobilemenu clearfix">
+                <div class="tm-mobilenav"></div>
+              </div>
+            </div>
+          </div>
+          <!--// Header Bottom Area -->
+        </div>
+        <!--// Header Area -->
+
+        <!-- Main Content -->
+        <main class="main-content">
+          <!-- Dashboard Area -->
+          <div class="tm-section dashboard-area bg-white tm-padding-section">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <!-- Dashboard Welcome -->
+                  <div class="dashboard-welcome">
+                    <div class="row align-items-center">
+                      <div class="col-lg-8">
+                        <h2>Welcome back, <span id="user-name">Member</span>!</h2>
+                        <p>Here's what's happening in your BDSM COMMUNITY today.</p>
+                      </div>
+                      <div class="col-lg-4 text-lg-right">
+                        <a href="profile.html" class="tm-button">View Profile</a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Dashboard Stats -->
+                  <div class="dashboard-stats">
+                    <div class="dashboard-stat">
+                      <i class="fas fa-envelope"></i>
+                      <h3>5</h3>
+                      <p>New Messages</p>
+                    </div>
+                    <div class="dashboard-stat">
+                      <i class="fas fa-heart"></i>
+                      <h3>12</h3>
+                      <p>Profile Likes</p>
+                    </div>
+                    <div class="dashboard-stat">
+                      <i class="fas fa-users"></i>
+                      <h3>3</h3>
+                      <p>New Matches</p>
+                    </div>
+                    <div class="dashboard-stat">
+                      <i class="fas fa-calendar-alt"></i>
+                      <h3>2</h3>
+                      <p>Upcoming Events</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row mt-50">
+                <div class="col-lg-4">
+                  <!-- Profile Card -->
+                  <div class="member-content">
+                    <h3>Your Profile</h3>
+                    <div class="profile-card">
+                      <div class="profile-avatar">
+                        <img src="assets/images/user-avatar.png" alt="User Avatar">
+                      </div>
+                      <div class="profile-info">
+                        <h4 id="profile-name">Member Name</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> <span id="profile-location">Location</span></p>
+                        <div class="profile-actions">
+                          <a href="profile.html"><i class="fas fa-edit"></i> Edit Profile</a>
+                          <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Quick Links -->
+                    <h3>Quick Links</h3>
+                    <ul class="list-group">
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="messages.html">Messages</a>
+                        <span class="badge badge-danger badge-pill">5</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="matches.html">Your Matches</a>
+                        <span class="badge badge-danger badge-pill">3</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="events.html">Upcoming Events</a>
+                        <span class="badge badge-danger badge-pill">2</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="saved-content.html">Saved Content</a>
+                        <span class="badge badge-danger badge-pill">7</span>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="preferences.html">Kink Preferences</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div class="col-lg-8">
+                  <!-- Exclusive Content -->
+                  <div class="member-content">
+                    <h3>Exclusive Content</h3>
+                    <div class="row exclusive-content">
+                      <!-- Content Card 1 -->
+                      <div class="col-md-6">
+                        <div class="content-card">
+                          <div class="content-card-image">
+                            <img src="assets/images/blog/blog-image-1.jpg" alt="Content Image">
+                          </div>
+                          <div class="content-card-body">
+                            <h5>Rope Bondage Basics</h5>
+                            <p>Learn the essential knots and safety practices for rope play from expert riggers.</p>
+                            <a href="content-details.html" class="tm-button tm-button-small">Read More</a>
+                          </div>
+                          <div class="content-card-footer">
+                            <span class="date">June 15, 2023</span>
+                            <span class="category">Tutorial</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <!-- Content Card 2 -->
+                      <div class="col-md-6">
+                        <div class="content-card">
+                          <div class="content-card-image">
+                            <img src="assets/images/blog/blog-image-2.jpg" alt="Content Image">
+                          </div>
+                          <div class="content-card-body">
+                            <h5>Communication & Consent</h5>
+                            <p>Effective communication strategies for negotiating scenes and establishing boundaries.</p>
+                            <a href="content-details.html" class="tm-button tm-button-small">Read More</a>
+                          </div>
+                          <div class="content-card-footer">
+                            <span class="date">June 10, 2023</span>
+                            <span class="category">Guide</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <!-- Content Card 3 -->
+                      <div class="col-md-6">
+                        <div class="content-card">
+                          <div class="content-card-image">
+                            <img src="assets/images/blog/blog-image-3.jpg" alt="Content Image">
+                          </div>
+                          <div class="content-card-body">
+                            <h5>Dominance & Submission</h5>
+                            <p>Exploring power dynamics and role-based relationships in BDSM practices.</p>
+                            <a href="content-details.html" class="tm-button tm-button-small">Read More</a>
+                          </div>
+                          <div class="content-card-footer">
+                            <span class="date">June 5, 2023</span>
+                            <span class="category">Article</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <!-- Content Card 4 -->
+                      <div class="col-md-6">
+                        <div class="content-card">
+                          <div class="content-card-image">
+                            <img src="assets/images/blog/blog-image-4.jpg" alt="Content Image">
+                          </div>
+                          <div class="content-card-body">
+                            <h5>Impact Play Safety</h5>
+                            <p>Safe techniques and best practices for various forms of impact play and sensation.</p>
+                            <a href="content-details.html" class="tm-button tm-button-small">Read More</a>
+                          </div>
+                          <div class="content-card-footer">
+                            <span class="date">May 28, 2023</span>
+                            <span class="category">Safety</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- View More Button -->
+                    <div class="text-center mt-4">
+                      <a href="exclusive-content.html" class="tm-button">View All Exclusive Content</a>
+                    </div>
+                  </div>
+                  
+                  <!-- Upcoming Events -->
+                  <div class="member-content">
+                    <h3>Upcoming Events</h3>
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>Event</th>
+                            <th>Date</th>
+                            <th>Location</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Rope Workshop: Intermediate Techniques</td>
+                            <td>June 25, 2023</td>
+                            <td>London, UK</td>
+                            <td><a href="event-details.html" class="btn btn-sm btn-outline-danger">Details</a></td>
+                          </tr>
+                          <tr>
+                            <td>BDSM Community Munch</td>
+                            <td>July 2, 2023</td>
+                            <td>Manchester, UK</td>
+                            <td><a href="event-details.html" class="btn btn-sm btn-outline-danger">Details</a></td>
+                          </tr>
+                          <tr>
+                            <td>Consent & Negotiation Workshop</td>
+                            <td>July 15, 2023</td>
+                            <td>Online</td>
+                            <td><a href="event-details.html" class="btn btn-sm btn-outline-danger">Details</a></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    
+                    <!-- View More Button -->
+                    <div class="text-center mt-4">
+                      <a href="events.html" class="tm-button">View All Events</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--// Dashboard Area -->
+        </main>
+        <!--// Main Content -->
+
+        <!-- Footer Area -->
+        <footer class="footer">
+          <!-- Footer Widgets -->
+          <div class="footer-toparea tm-padding-section">
+            <div class="container">
+              <div class="row widgets footer-widgets">
+                <div class="col-lg-3 col-md-6 col-12">
+                  <!-- Single Widget (Widget Contact) -->
+                  <div class="single-widget widget-contact">
+                    <h5 class="widget-title">Get In Touch</h5>
+                    <ul>
+                      <li>
+                        <b>Address :</b>2726 Avenue Papineau Montreal, QC, Canada
+                      </li>
+                      <li>
+                        <b>Phone :</b><a href="tel:+18009156270">1-800-915-6270</a>
+                      </li>
+                      <li>
+                        <b>Email :</b><a href="mailto:info@example.com">info@example.com</a>
+                      </li>
+                    </ul>
+                    <ul class="widget-contact-social">
+                      <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
+                      <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
+                      <li><a href="#"><i class="zmdi zmdi-pinterest"></i></a></li>
+                      <li><a href="#"><i class="zmdi zmdi-linkedin"></i></a></li>
+                    </ul>
+                  </div>
+                  <!--// Single Widget (Widget Contact) -->
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-12">
+                  <!-- Single Widget (Widget Blog) -->
+                  <div class="single-widget widget-recentpost">
+                    <h5 class="widget-title">Recent Posts</h5>
+                    <ul>
+                      <li>
+                        <a href="blog-details.html" class="widget-recentpost-image">
+                          <img src="assets/images/blog/thumbnails/blog-thumbnail-1.jpg" alt="blog thumbnail" />
+                        </a>
+                        <div class="widget-recentpost-content">
+                          <h6><a href="blog-details.html">Minor Surgeries of the Foot</a></h6>
+                          <span>August 01, 2019</span>
+                        </div>
+                      </li>
+                      <li>
+                        <a href="blog-details.html" class="widget-recentpost-image">
+                          <img src="assets/images/blog/thumbnails/blog-thumbnail-2.jpg" alt="blog thumbnail" />
+                        </a>
+                        <div class="widget-recentpost-content">
+                          <h6><a href="blog-details.html">Assistive Device Program</a></h6>
+                          <span>August 01, 2019</span>
+                        </div>
+                      </li>
+                      <li>
+                        <a href="blog-details.html" class="widget-recentpost-image">
+                          <img src="assets/images/blog/thumbnails/blog-thumbnail-3.jpg" alt="blog thumbnail" />
+                        </a>
+                        <div class="widget-recentpost-content">
+                          <h6><a href="blog-details.html">Initial plus treatment</a></h6>
+                          <span>August 01, 2019</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <!--// Single Widget (Widget Blog) -->
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-12">
+                  <!-- Single Wiget (Widget Quicklinks) -->
+                  <div class="single-widget widget-quicklinks">
+                    <h5 class="widget-title">Customer services</h5>
+                    <ul>
+                      <li><a href="#">Physiotherapy</a></li>
+                      <li><a href="#">Massage Therapy</a></li>
+                      <li><a href="#">Vehicle Injury Treatment</a></li>
+                      <li><a href="#">Acupuncture</a></li>
+                      <li><a href="#">Neurological Rehabilitation</a></li>
+                      <li><a href="#">Custom-Made Orthotics</a></li>
+                    </ul>
+                  </div>
+                  <!--// Single Wiget (Widget Quicklinks) -->
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-12">
+                  <!-- Single Widget (Widget Newsletter) -->
+                  <div class="single-widget widget-newsletter">
+                    <h5 class="widget-title">Subscribe us</h5>
+                    <p>Get Business news, tip and solutions to your problems from our experts.</p>
+                    <form id="tm-mailchimp-form" class="widget-newsletter-form">
+                      <input id="mc-email" type="text" placeholder="Email address" required="required" />
+                      <button id="mc-submit" type="submit" class="tm-button">
+                        <i class="zmdi zmdi-mail-send"></i>
+                      </button>
+                    </form>
+                    <!-- Mailchimp Alerts -->
+                    <div class="tm-mailchimp-alerts">
+                      <div class="tm-mailchimp-submitting"></div>
+                      <div class="mailchimp-success"></div>
+                      <div class="tm-mailchimp-error"></div>
+                    </div>
+                    <!--// Mailchimp Alerts -->
+                    <img src="assets/images/icons/payment-methods.png" alt="payment methods" />
+                  </div>
+                  <!--// Single Widget (Widget Newsletter) -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--// Footer Widgets -->
+
+          <!-- Footer -->
+          <div class="footer-bottomarea">
+            <div class="container">
+              <p class="footer-copyright">Copyright 2023 by <a href="#">BDSM COMMUNITY</a>. All rights reserved</p>
+            </div>
+          </div>
+          <!--// Footer -->
+        </footer>
+       <!--// Footer Area -->
+
+      <!-- Product Quickview -->
+      <div class="tm-product-quickview" id="tm-product-quickview">
+        <div class="container">
+          <div class="tm-product-quickview-inner">
+            <div class="tm-prodetails">
+              <div class="row">
+                <div class="col-lg-5 col-md-6 col-12">
+                  <!-- Product Details Images -->
+                  <div class="tm-prodetails-images">
+                    <div class="tm-prodetails-largeimages">
+                      <div class="tm-prodetails-largeimage">
+                        <img
+                          src="assets/images/product/product-image-1.jpg"
+                          alt="product image"
+                        />
+                      </div>
+                      <div class="tm-prodetails-largeimage">
+                        <img
+                          src="assets/images/product/product-image-2.jpg"
+                          alt="product image"
+                        />
+                      </div>
+                      <div class="tm-prodetails-largeimage">
+                        <img
+                          src="assets/images/product/product-image-3.jpg"
+                          alt="product image"
+                        />
+                      </div>
+                      <div class="tm-prodetails-largeimage">
+                        <img
+                          src="assets/images/product/product-image-4.jpg"
+                          alt="product image"
+                        />
+                      </div>
+                      <div class="tm-prodetails-largeimage">
+                        <img
+                          src="assets/images/product/product-image-2.jpg"
+                          alt="product image"
+                        />
+                      </div>
+                      <div class="tm-prodetails-largeimage">
+                        <img
+                          src="assets/images/product/product-image-3.jpg"
+                          alt="product image"
+                        />
+                      </div>
+                    </div>
+                    <div class="tm-prodetails-thumbnails">
+                      <div class="tm-prodetails-thumbnail">
+                        <img
+                          src="assets/images/product/thumbnail/product-image-1.jpg"
+                          alt="product image"
+                        />
+                      </div>
+                      <div class="tm-prodetails-thumbnail">
+                        <img
+                          src="assets/images/product/thumbnail/product-image-2.jpg"
+                          alt="product image"
+                        />
+                      </div>
+                      <div class="tm-prodetails-thumbnail">
+                        <img
+                          src="assets/images/product/thumbnail/product-image-3.jpg"
+                          alt="product image"
+                        />
+                      </div>
+                      <div class="tm-prodetails-thumbnail">
+                        <img
+                          src="assets/images/product/thumbnail/product-image-4.jpg"
+                          alt="product image"
+                        />
+                      </div>
+                      <div class="tm-prodetails-thumbnail">
+                        <img
+                          src="assets/images/product/thumbnail/product-image-2.jpg"
+                          alt="product image"
+                        />
+                      </div>
+                      <div class="tm-prodetails-thumbnail">
+                        <img
+                          src="assets/images/product/thumbnail/product-image-3.jpg"
+                          alt="product image"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <!--// Product Details Images -->
+                </div>
+
+                <div class="col-lg-7 col-md-6 col-12">
+                  <div class="tm-prodetails-content">
+                    <h3 class="tm-prodetails-title">
+                      Cosmetology Essential oil
+                    </h3>
+                    <div class="tm-rating">
+                      <span class="active"><i class="zmdi zmdi-star"></i></span>
+                      <span class="active"><i class="zmdi zmdi-star"></i></span>
+                      <span class="active"><i class="zmdi zmdi-star"></i></span>
+                      <span class="active"><i class="zmdi zmdi-star"></i></span>
+                      <span class="active"><i class="zmdi zmdi-star"></i></span>
+                    </div>
+                    <p class="tm-prodetails-availability">
+                      Availalbe: <span>In Stock</span>
+                    </p>
+                    <div class="tm-prodetails-price">
+                      <span><del>$75.99</del> $59.99</span>
+                    </div>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Quisque mi dolor, malesuada id metus a, mattis eleifend
+                      elit. Nullam pharetra consequat ex in dapibus. Vestibulum
+                      ante.
+                    </p>
+                    <div class="tm-prodetails-quantitycart">
+                      <div class="tm-quantitybox">
+                        <input type="text" value="1" />
+                      </div>
+                      <a href="#" class="tm-button tm-button-dark"
+                        >Add To Cart<b></b
+                      ></a>
+                    </div>
+
+                    <div class="tm-prodetails-categories">
+                      <h6>Categories :</h6>
+                      <ul>
+                        <li><a href="shop.html">Accessories</a></li>
+                        <li><a href="shop.html">Electronics</a></li>
+                        <li><a href="shop.html">White</a></li>
+                      </ul>
+                    </div>
+
+                    <div class="tm-prodetails-tags">
+                      <h6>Tags :</h6>
+                      <ul>
+                        <li><a href="shop.html">Electronic</a></li>
+                        <li><a href="shop.html">Smartwatch</a></li>
+                      </ul>
+                    </div>
+
+                    <div class="tm-prodetails-share">
+                      <h6>Share :</h6>
+                      <ul>
+                        <li>
+                          <a href="#"><i class="zmdi zmdi-twitter"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="zmdi zmdi-facebook"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="zmdi zmdi-pinterest"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="zmdi zmdi-linkedin"></i></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--// Product Quickview -->
+    </div>
+
+    <!-- Js Files -->
+    <script src="assets/js/modernizr-3.6.0.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/jquery.ripples.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <!--// Js Files -->
+  </body>
+
+  <!-- Mirrored from thememarch.com/demo/html/dialia/dialia/index-ripple-bg.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Apr 2025 09:25:50 GMT -->
+</html>

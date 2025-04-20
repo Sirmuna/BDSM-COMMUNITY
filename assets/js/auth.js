@@ -1,9 +1,19 @@
 /**
  * Authentication JavaScript
- * Handles form validation and submission for login and registration
+ * Handles form validation, submission, password visibility, and logout functionality
+ * Uses cookies for better security and performance
  */
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Initialize password visibility toggles
+  initPasswordToggles();
+
+  // Initialize user menu if on dashboard
+  initUserMenu();
+
+  // Setup logout functionality
+  setupLogout();
+
   // Registration form handling
   const registrationForm = document.getElementById("registration-form");
   if (registrationForm) {
@@ -77,8 +87,9 @@ document.addEventListener("DOMContentLoaded", function () {
         showLoadingState();
 
         setTimeout(() => {
-          // Simulate successful registration
-          localStorage.setItem("registeredEmail", email);
+          // Simulate successful registration - store in cookies instead of localStorage
+          setCookie("registeredEmail", email, 30); // Store for 30 days
+          setCookie("registeredUsername", username, 30);
 
           // Show success message
           showSuccessMessage(
@@ -132,13 +143,25 @@ document.addEventListener("DOMContentLoaded", function () {
         showLoadingState();
 
         setTimeout(() => {
-          const registeredEmail = localStorage.getItem("registeredEmail");
+          const registeredEmail = getCookie("registeredEmail");
+          const registeredUsername = getCookie("registeredUsername") || "User";
 
           if (registeredEmail && registeredEmail === email) {
             // Simulate successful login
             if (rememberMe) {
-              localStorage.setItem("rememberedEmail", email);
+              setCookie("rememberedEmail", email, 30); // Store for 30 days
+            } else {
+              // If remember me is not checked, set a session cookie (expires when browser closes)
+              document.cookie = `rememberedEmail=${email}; path=/; SameSite=Strict`;
             }
+
+            // Set user as logged in - with secure cookies
+            setCookie("isLoggedIn", "true", rememberMe ? 30 : null); // If remember me, store for 30 days, otherwise session cookie
+            setCookie("currentUser", registeredUsername, rememberMe ? 30 : null);
+            
+            // Set auth token (in a real app, this would be a JWT or other secure token)
+            const authToken = generateAuthToken();
+            setCookie("authToken", authToken, rememberMe ? 30 : null, true); // Set as secure cookie
 
             // Show success message
             showSuccessMessage("Login successful! Redirecting to dashboard...");
@@ -156,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Auto-fill remembered email if available
-    const rememberedEmail = localStorage.getItem("rememberedEmail");
+    const rememberedEmail = getCookie("rememberedEmail");
     if (rememberedEmail) {
       document.getElementById("login-email").value = rememberedEmail;
       document.getElementById("remember-me").checked = true;
@@ -243,4 +266,234 @@ document.addEventListener("DOMContentLoaded", function () {
   submitButtons.forEach((button) => {
     button.setAttribute("data-original-text", button.textContent);
   });
+
+  // Check if user is logged in and update UI accordingly
+  checkLoginStatus();
+
+  // Password visibility toggle functionality
+  function initPasswordToggles() {
+    const passwordFields = document.querySelectorAll(".password-field");
+
+    passwordFields.forEach((field) => {
+      const input = field.querySelector('input[type="password"]');
+      if (!input) return;
+
+      // Check if toggle button already exists
+      let toggleBtn = field.querySelector(".password-toggle");
+
+      // If toggle doesn't exist, create it
+      if (!toggleBtn) {
+        toggleBtn = document.createElement("button");
+        toggleBtn.type = "button";
+        toggleBtn.className = "password-toggle";
+        toggleBtn.innerHTML = '<i class="fa fa-eye-slash"></i>';
+        toggleBtn.setAttribute("aria-label", "Toggle password visibility");
+        field.appendChild(toggleBtn);
+      }
+
+      // Add event listener to toggle button
+      toggleBtn.addEventListener("click", function () {
+        const icon = this.querySelector("i");
+
+        if (input.type === "password") {
+          input.type = "text";
+          icon.classList.remove("fa-eye-slash");
+          icon.classList.add("fa-eye");
+        } else {
+          input.type = "password";
+          icon.classList.remove("fa-eye");
+          icon.classList.add("fa-eye-slash");
+        }
+      });
+    });
+  }
+
+  // Check login status and update UI
+  function checkLoginStatus() {
+    const isLoggedIn = getCookie("isLoggedIn") === "true";
+    const currentUser = getCookie("currentUser");
+    const authToken = getCookie("authToken");
+
+    // Verify if user is properly authenticated
+    if (isLoggedIn && currentUser && authToken) {
+      // Find header elements to update
+      const headerTopButtons = document.querySelectorAll(".header-topbutton");
+
+      if (headerTopButtons.length > 0) {
+        // Create user menu HTML
+        const userMenuHTML = `
+          <div class="user-menu">
+            <div class="user-menu-toggle">
+              <div class="user-avatar">
+                <img src="assets/images/user-avatar.png" alt="User Avatar">
+              </div>
+              <span class="user-name">${currentUser}</span>
+              <i class="fa fa-chevron-down"></i>
+            </div>
+            <div class="user-menu-dropdown">
+              <a href="dashboard.html" class="user-menu-item">
+                <i class="fa fa-tachometer-alt"></i> Dashboard
+              </a>
+              <a href="profile.html" class="user-menu-item">
+                <i class="fa fa-user"></i> My Profile
+              </a>
+              <a href="settings.html" class="user-menu-item">
+                <i class="fa fa-cog"></i> Settings
+              </a>
+              <div class="user-menu-divider"></div>
+              <a href="#" class="user-menu-item logout-link">
+                <i class="fa fa-sign-out-alt"></i> Logout
+              </a>
+            </div>
+          </div>
+          <a href="#" class="logout-button"><i class="fa fa-sign-out-alt"></i> Logout</a>
+        `;
+
+        // Replace contact us button with user menu
+        headerTopButtons.forEach((button) => {
+          button.innerHTML = userMenuHTML;
+        });
+      }
+    }
+  }
+
+  // Check login status and update UI
+  function checkLoginStatus() {
+    const isLoggedIn = getCookie("isLoggedIn") === "true";
+    const currentUser = getCookie("currentUser");
+    const authToken = getCookie("authToken");
+
+    // Verify if user is properly authenticated
+    if (isLoggedIn && currentUser && authToken) {
+      // Find header elements to update
+      const headerTopButtons = document.querySelectorAll(".header-topbutton");
+
+      if (headerTopButtons.length > 0) {
+        // Create user menu HTML
+        const userMenuHTML = `
+          <div class="user-menu">
+            <div class="user-menu-toggle">
+              <div class="user-avatar">
+                <img src="assets/images/user-avatar.png" alt="User Avatar">
+              </div>
+              <span class="user-name">${currentUser}</span>
+              <i class="fa fa-chevron-down"></i>
+            </div>
+            <div class="user-menu-dropdown">
+              <a href="dashboard.html" class="user-menu-item">
+                <i class="fa fa-tachometer-alt"></i> Dashboard
+              </a>
+              <a href="profile.html" class="user-menu-item">
+                <i class="fa fa-user"></i> My Profile
+              </a>
+              <a href="settings.html" class="user-menu-item">
+                <i class="fa fa-cog"></i> Settings
+              </a>
+              <div class="user-menu-divider"></div>
+              <a href="#" class="user-menu-item logout-link">
+                <i class="fa fa-sign-out-alt"></i> Logout
+              </a>
+            </div>
+          </div>
+          <a href="#" class="logout-button"><i class="fa fa-sign-out-alt"></i> Logout</a>
+        `;
+
+        // Replace contact us button with user menu
+        headerTopButtons.forEach((button) => {
+          button.innerHTML = userMenuHTML;
+        });
+      }
+    }
+  }
+
+  // Initialize user menu dropdown
+  function initUserMenu() {
+    document.addEventListener("click", function (e) {
+      const userMenuToggle = e.target.closest(".user-menu-toggle");
+
+      if (userMenuToggle) {
+        const dropdown = userMenuToggle.nextElementSibling;
+        dropdown.classList.toggle("show");
+        e.stopPropagation();
+      } else if (!e.target.closest(".user-menu-dropdown")) {
+        // Close all dropdowns when clicking outside
+        const dropdowns = document.querySelectorAll(".user-menu-dropdown");
+        dropdowns.forEach((dropdown) => dropdown.classList.remove("show"));
+      }
+    });
+  }
+
+  // Setup logout functionality
+  function setupLogout() {
+    // Add event listeners to all logout buttons/links
+    document.addEventListener("click", function (e) {
+      if (
+        e.target.closest(".logout-button") ||
+        e.target.closest(".logout-link")
+      ) {
+        e.preventDefault();
+
+        // Clear all auth cookies
+        deleteCookie("isLoggedIn");
+        deleteCookie("currentUser");
+        deleteCookie("authToken");
+
+        // Redirect to login page
+        window.location.href = "login.html";
+      }
+    });
+  }
+
+  // Cookie management functions
+  function setCookie(name, value, days, secure = false) {
+    let expires = "";
+    
+    if (days) {
+      const date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      expires = "; expires=" + date.toUTCString();
+    }
+    
+    // Set secure flag if requested and if using HTTPS
+    const secureFlag = secure && location.protocol === 'https:' ? '; Secure' : '';
+    
+    document.cookie = 
+      name + "=" + encodeURIComponent(value) + 
+      expires + 
+      "; path=/" + 
+      secureFlag + 
+      "; SameSite=Strict";
+  }
+
+  function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) === 0) {
+        return decodeURIComponent(c.substring(nameEQ.length, c.length));
+      }
+    }
+    
+    return null;
+  }
+
+  function deleteCookie(name) {
+    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=Strict";
+  }
+
+  // Generate a simple auth token (in a real app, this would be from the server)
+  function generateAuthToken() {
+    // Simple random token generator - in a real app, this would be a JWT from the server
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let token = '';
+    
+    for (let i = 0; i < 32; i++) {
+      token += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    
+    return token;
+  }
 });

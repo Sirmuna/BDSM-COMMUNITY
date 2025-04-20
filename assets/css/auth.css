@@ -94,10 +94,24 @@
   transform: translateY(-50%);
   cursor: pointer;
   color: #777;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  transition: color 0.3s ease;
 }
 
 .password-toggle:hover {
   color: #e73c3e;
+}
+
+.password-toggle:focus {
+  outline: none;
 }
 
 .auth-form .form-text {
@@ -295,6 +309,111 @@
   }
 }
 
+/* Logout Button */
+.logout-button {
+  display: inline-flex;
+  align-items: center;
+  background-color: #f8f9fa;
+  color: #e73c3e;
+  border: 1px solid #e73c3e;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin-left: 15px;
+}
+
+.logout-button:hover {
+  background-color: #e73c3e;
+  color: #fff;
+  text-decoration: none;
+}
+
+.logout-button i {
+  margin-right: 8px;
+}
+
+/* User Menu in Header */
+.user-menu {
+  position: relative;
+}
+
+.user-menu-toggle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.user-menu-toggle:hover {
+  background-color: rgba(231, 60, 62, 0.1);
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 8px;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-name {
+  font-weight: 500;
+  margin-right: 5px;
+}
+
+.user-menu-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  min-width: 180px;
+  z-index: 1000;
+  display: none;
+  overflow: hidden;
+}
+
+.user-menu-dropdown.show {
+  display: block;
+}
+
+.user-menu-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.user-menu-item:hover {
+  background-color: #f8f9fa;
+  color: #e73c3e;
+}
+
+.user-menu-item i {
+  margin-right: 10px;
+  width: 16px;
+  text-align: center;
+}
+
+.user-menu-divider {
+  height: 1px;
+  background-color: #eee;
+  margin: 5px 0;
+}
+
 /* Responsive adjustments */
 @media (max-width: 767px) {
   .auth-form-wrapper {
@@ -308,5 +427,19 @@
   .social-login-btn {
     font-size: 14px;
     padding: 10px 5px;
+  }
+  
+  .logout-button {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+  
+  .user-menu-toggle {
+    padding: 3px 8px;
+  }
+  
+  .user-avatar {
+    width: 28px;
+    height: 28px;
   }
 }

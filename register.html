@@ -14,6 +14,47 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <!-- Add custom styles for auth forms -->
     <link rel="stylesheet" href="assets/css/auth.css">
+    <!-- FontAwesome for the eye icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .password-field {
+            position: relative;
+        }
+        .password-toggle {
+            cursor: pointer;
+            background: transparent;
+            border: none;
+        }
+        .input-group .password-toggle {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            border-left: 1px solid #ced4da;
+        }
+        .input-group .password-toggle i {
+            font-size: 16px;
+            color: #666;
+        }
+        /* Password requirements styling */
+        .password-requirements {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .password-requirements ul {
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+        .text-success {
+            color: #28a745 !important;
+        }
+        .text-danger {
+            color: #dc3545 !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Include your header -->
@@ -46,15 +87,38 @@
                                 <small class="form-text text-muted">We'll never share your email with anyone else</small>
                             </div>
                             
-                            <div class="form-group">
+                            <div class="form-group password-field">
                                 <label for="password">Password</label>
-                                <input type="password" id="password" name="password" class="form-control" required>
+                                <div class="input-group">
+                                    <input type="password" id="password" name="password" class="form-control" required>
+                                    <div class="input-group-append">
+                                        <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+                                            <i class="fa fa-eye-slash"></i>
+                                        </button>
+                                    </div>
+                                </div>
                                 <small class="form-text text-muted">At least 8 characters with letters and numbers</small>
+                                <div class="password-requirements">
+                                    <p class="mb-1">Password must contain:</p>
+                                    <ul>
+                                        <li id="length-check" class="text-muted">At least 8 characters</li>
+                                        <li id="letter-check" class="text-muted">At least one letter</li>
+                                        <li id="number-check" class="text-muted">At least one number</li>
+                                    </ul>
+                                </div>
                             </div>
                             
-                            <div class="form-group">
+                            <div class="form-group password-field">
                                 <label for="confirm-password">Confirm Password</label>
-                                <input type="password" id="confirm-password" name="confirm-password" class="form-control" required>
+                                <div class="input-group">
+                                    <input type="password" id="confirm-password" name="confirm-password" class="form-control" required>
+                                    <div class="input-group-append">
+                                        <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+                                            <i class="fa fa-eye-slash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <small id="password-match" class="form-text"></small>
                             </div>
                             
                             <div class="form-group form-check">
@@ -95,10 +159,78 @@
     <script src="assets/js/main.js"></script>
     <!-- Age verification script -->
     <script src="assets/js/age-verification.js"></script>
-    <!-- Auth script -->
+    <!-- Auth script - Load this BEFORE the custom script -->
     <script src="assets/js/auth.js"></script>
-    <!-- login startup -->
-    <script src="assets/js/login-handler.js"></script>
+    <!-- Password validation script -->
+    <script>
+        $(document).ready(function() {
+            // Password visibility toggle
+            $('.password-toggle').click(function() {
+                const passwordInput = $(this).closest('.input-group').find('input');
+                const icon = $(this).find('i');
+                
+                if (passwordInput.attr('type') === 'password') {
+                    passwordInput.attr('type', 'text');
+                    icon.removeClass('fa-eye-slash').addClass('fa-eye');
+                } else {
+                    passwordInput.attr('type', 'password');
+                    icon.removeClass('fa-eye').addClass('fa-eye-slash');
+                }
+            });
+            
+            // Password validation
+            $('#password').on('input', function() {
+                const password = $(this).val();
+                
+                // Check length
+                if (password.length >= 8) {
+                    $('#length-check').addClass('text-success').removeClass('text-muted');
+                } else {
+                    $('#length-check').removeClass('text-success').addClass('text-muted');
+                }
+                
+                // Check for letters
+                if (/[a-zA-Z]/.test(password)) {
+                    $('#letter-check').addClass('text-success').removeClass('text-muted');
+                } else {
+                    $('#letter-check').removeClass('text-success').addClass('text-muted');
+                }
+                
+                // Check for numbers
+                if (/\d/.test(password)) {
+                    $('#number-check').addClass('text-success').removeClass('text-muted');
+                } else {
+                    $('#number-check').removeClass('text-success').addClass('text-muted');
+                }
+                
+                // Check password match
+                checkPasswordMatch();
+            });
+            
+            // Check password match
+            $('#confirm-password').on('input', checkPasswordMatch);
+            
+            function checkPasswordMatch() {
+                const password = $('#password').val();
+                const confirmPassword = $('#confirm-password').val();
+                
+                if (confirmPassword.length > 0) {
+                    if (password === confirmPassword) {
+                        $('#password-match').text('Passwords match').addClass('text-success').removeClass('text-danger');
+                    } else {
+                        $('#password-match').text('Passwords do not match').addClass('text-danger').removeClass('text-success');
+                    }
+                } else {
+                    $('#password-match').text('');
+                }
+            }
+            
+            // IMPORTANT: Don't add a submit handler here - let auth.js handle the form submission
+            // This ensures proper functionality including the redirect to login page
+        });
+    </script>
 </body>
 </html>
 </qodoArtifact>
+
+## 2. Fixed Login Page (login.html)

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -34,8 +34,6 @@
     <link rel="stylesheet" href="assets/css/style.css" />
 
     <link rel="stylesheet" href="assets/css/custom.css" />
-    <link rel="stylesheet" href="assets/css/language-switcher.css" />
-    <link rel="stylesheet" href="assets/css/language-switcher-mobile.css" />
   </head>
 
   <body>
@@ -108,37 +106,38 @@
                 <ul>
                   <li><a href="about-us.html">About</a></li>
                   <li><a href="shop.html">Shop</a></li>
-                  <li><a href="blog.html">Blog</a></li>
-                  <li><a href="contact.html">Contact</a></li>
-                  <!-- Language switcher for desktop -->
-                  <li class="language-switcher">
-                    <button class="language-btn" id="language-toggle-desktop">
-                      <img src="assets/images/flags/en.png" alt="English" />
-                      <span>EN</span>
-                      <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div
-                      class="language-dropdown"
-                      id="language-dropdown-desktop"
-                    >
-                      <div class="language-option" data-lang="en">
-                        <img src="assets/images/flags/en.png" alt="English" />
-                        <span>English</span>
-                      </div>
-                      <div class="language-option" data-lang="fr">
-                        <img src="assets/images/flags/fr.png" alt="French" />
-                        <span>Français</span>
-                      </div>
-                      <div class="language-option" data-lang="es">
-                        <img src="assets/images/flags/es.png" alt="Spanish" />
-                        <span>Español</span>
-                      </div>
-                      <div class="language-option" data-lang="de">
-                        <img src="assets/images/flags/de.png" alt="German" />
-                        <span>Deutsch</span>
-                      </div>
-                    </div>
+                  <li class="tm-navigation-dropdown">
+                    <a href="blog.html">Blog</a>
+                    <ul>
+                      <li><a href="blog.html">Blog Right Sidebar</a></li>
+                      <li>
+                        <a href="blog-left-sidebar.html">Blog Left Sidebar</a>
+                      </li>
+                      <li><a href="blog-2-column.html">Blog 2 Column</a></li>
+                      <li><a href="blog-3-column.html">Blog 3 Column</a></li>
+                      <li>
+                        <a href="blog-details.html">Blog Details</a>
+                        <ul>
+                          <li><a href="blog-details.html">Right Sidebar</a></li>
+                          <li>
+                            <a href="blog-details-left-sidebar.html"
+                              >Left Sidebar</a
+                            >
+                          </li>
+                          <li>
+                            <a href="blog-details-audio.html">Audio Post</a>
+                          </li>
+                          <li>
+                            <a href="blog-details-video.html">Video Post</a>
+                          </li>
+                          <li>
+                            <a href="blog-details-gallery.html">Gallery Post</a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
                   </li>
+                  <li><a href="contact.html">Contact</a></li>
                 </ul>
               </nav>
               <div class="header-icons">
@@ -163,38 +162,6 @@
             </div>
             <div class="header-mobilemenu clearfix">
               <div class="tm-mobilenav"></div>
-              <!-- Language switcher for mobile -->
-              <div class="language-switcher-mobile">
-                <button
-                  class="language-toggle-mobile"
-                  id="language-toggle-mobile"
-                >
-                  <img src="assets/images/flags/en.png" alt="English" />
-                  <span>EN</span>
-                  <i class="fas fa-chevron-down"></i>
-                </button>
-                <div
-                  class="language-dropdown-mobile"
-                  id="language-dropdown-mobile"
-                >
-                  <div class="language-option" data-lang="en">
-                    <img src="assets/images/flags/en.png" alt="English" />
-                    <span>English</span>
-                  </div>
-                  <div class="language-option" data-lang="fr">
-                    <img src="assets/images/flags/fr.png" alt="French" />
-                    <span>Français</span>
-                  </div>
-                  <div class="language-option" data-lang="es">
-                    <img src="assets/images/flags/es.png" alt="Spanish" />
-                    <span>Español</span>
-                  </div>
-                  <div class="language-option" data-lang="de">
-                    <img src="assets/images/flags/de.png" alt="German" />
-                    <span>Deutsch</span>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -208,7 +175,8 @@
         <div
           class="heroslider-slider heroslider-animated tm-slider-dots tm-slider-dots-left"
         >
-          <!-- Heroslider Single -->
+
+        <!-- Heroslider Single -->
           <div
             class="heroslider-singleslider d-flex align-items-center tm-rippple-active"
             data-bgimage="assets/images/bg/bg-image.jpg"
@@ -622,9 +590,7 @@
             <div class="tm-cta">
               <div class="tm-cta-content">
                 <h3>Join Our Community Today</h3>
-                <h2>
-                  Connect with like-minded individuals who share your interests
-                </h2>
+                <h2>Connect with like-minded individuals who share your interests</h2>
               </div>
               <div class="tm-cta-button">
                 <a href="#" class="tm-button tm-button-white">Sign Up Now</a>
@@ -633,6 +599,302 @@
           </div>
         </div>
         <!--// Call To Action -->
+
+        <!-- Pricing Area -->
+        <div
+          class="tm-section pricing-benifits-area bg-grey tm-padding-section"
+          data-bgimage="assets/images/bg/pricing-bg.jpg"
+          data-white-overlay="9"
+        >
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="tm-pricing-left">
+                  <h2>
+                    <span><span class="color-theme">Benefits</span> of</span
+                    ><br />
+                    Registered Massage Therapy
+                  </h2>
+                  <p>
+                    There are remarkable benefits to be achieved through regular
+                    massage therapy treatments from a R egistered Massage
+                    Therapist. Massage therapy can be an important part of your
+                    health maintenance plan.
+                  </p>
+
+                  <ul class="nav" id="bstab1" role="tablist">
+                    <li class="nav-item">
+                      <a
+                        class="nav-link active"
+                        id="bstab1-area1-tab"
+                        data-toggle="tab"
+                        href="#bstab1-area1"
+                        role="tab"
+                        aria-controls="bstab1-area1"
+                        aria-selected="true"
+                        >Reducing or eliminating pain</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link"
+                        id="bstab1-area2-tab"
+                        data-toggle="tab"
+                        href="#bstab1-area2"
+                        role="tab"
+                        aria-controls="bstab1-area2"
+                        aria-selected="false"
+                        >Improving joint mobility</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link"
+                        id="bstab1-area3-tab"
+                        data-toggle="tab"
+                        href="#bstab1-area3"
+                        role="tab"
+                        aria-controls="bstab1-area3"
+                        aria-selected="false"
+                        >Circulatory problems</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link"
+                        id="bstab1-area4-tab"
+                        data-toggle="tab"
+                        href="#bstab1-area4"
+                        role="tab"
+                        aria-controls="bstab1-area3"
+                        aria-selected="false"
+                        >Improving lymphatic drainage</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link"
+                        id="bstab1-area5-tab"
+                        data-toggle="tab"
+                        href="#bstab1-area5"
+                        role="tab"
+                        aria-controls="bstab1-area3"
+                        aria-selected="false"
+                        >Reducing muscular tension</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link"
+                        id="bstab1-area6-tab"
+                        data-toggle="tab"
+                        href="#bstab1-area6"
+                        role="tab"
+                        aria-controls="bstab1-area3"
+                        aria-selected="false"
+                        >Post-surgical rehabilitation</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="tm-pricing-right">
+                  <h2>Therapy <span class="color-theme">Rates</span></h2>
+                  <p>
+                    New and returning clients are encouraged to book a massage
+                    appointment online by clicking the book an appointment
+                    button
+                  </p>
+
+                  <div class="tab-content" id="bstab1-ontent">
+                    <div
+                      class="tab-pane fade show active"
+                      id="bstab1-area1"
+                      role="tabpanel"
+                      aria-labelledby="bstab1-area1-tab"
+                    >
+                      <h5 class="tm-pricing-name">
+                        Rates (Reducing or eliminating pain)
+                      </h5>
+                      <div
+                        class="tm-pricing-priceboxes tm-slider-dots tm-slider-dots-vertical"
+                      >
+                        <div class="tm-pricing-pricebox">
+                          <h2>30 <span>minutes</span></h2>
+                          <h3>$65.00</h3>
+                        </div>
+                        <div class="tm-pricing-pricebox">
+                          <h2>45 <span>minutes</span></h2>
+                          <h3>$75.00</h3>
+                        </div>
+                        <div class="tm-pricing-pricebox">
+                          <h2>60 <span>minutes</span></h2>
+                          <h3>$90.00</h3>
+                        </div>
+                        <div class="tm-pricing-pricebox">
+                          <h2>90 <span>minutes</span></h2>
+                          <h3>$120.00</h3>
+                        </div>
+                        <div class="tm-pricing-pricebox">
+                          <h2>120 <span>minutes</span></h2>
+                          <h3>$160.00</h3>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="bstab1-area2"
+                      role="tabpanel"
+                      aria-labelledby="bstab1-area2-tab"
+                    >
+                      <h5 class="tm-pricing-name">
+                        Rates (Improving joint mobility)
+                      </h5>
+                      <div
+                        class="tm-pricing-priceboxes tm-slider-dots tm-slider-dots-vertical"
+                      >
+                        <div class="tm-pricing-pricebox">
+                          <h2>30 <span>minutes</span></h2>
+                          <h3>$65.00</h3>
+                        </div>
+                        <div class="tm-pricing-pricebox">
+                          <h2>45 <span>minutes</span></h2>
+                          <h3>$75.00</h3>
+                        </div>
+                        <div class="tm-pricing-pricebox">
+                          <h2>60 <span>minutes</span></h2>
+                          <h3>$90.00</h3>
+                        </div>
+                        <div class="tm-pricing-pricebox">
+                          <h2>90 <span>minutes</span></h2>
+                          <h3>$120.00</h3>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="bstab1-area3"
+                      role="tabpanel"
+                      aria-labelledby="bstab1-area3-tab"
+                    >
+                      <h5 class="tm-pricing-name">
+                        Rates (Circulatory problems)
+                      </h5>
+                      <div
+                        class="tm-pricing-priceboxes tm-slider-dots tm-slider-dots-vertical"
+                      >
+                        <div class="tm-pricing-pricebox">
+                          <h2>30 <span>minutes</span></h2>
+                          <h3>$65.00</h3>
+                        </div>
+                        <div class="tm-pricing-pricebox">
+                          <h2>45 <span>minutes</span></h2>
+                          <h3>$75.00</h3>
+                        </div>
+                        <div class="tm-pricing-pricebox">
+                          <h2>60 <span>minutes</span></h2>
+                          <h3>$90.00</h3>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="bstab1-area4"
+                      role="tabpanel"
+                      aria-labelledby="bstab1-area4-tab"
+                    >
+                      <h5 class="tm-pricing-name">
+                        Rates (Improving lymphatic drainage)
+                      </h5>
+                      <div
+                        class="tm-pricing-priceboxes tm-slider-dots tm-slider-dots-vertical"
+                      >
+                        <div class="tm-pricing-pricebox">
+                          <h2>30 <span>minutes</span></h2>
+                          <h3>$65.00</h3>
+                        </div>
+                        <div class="tm-pricing-pricebox">
+                          <h2>45 <span>minutes</span></h2>
+                          <h3>$75.00</h3>
+                        </div>
+                        <div class="tm-pricing-pricebox">
+                          <h2>60 <span>minutes</span></h2>
+                          <h3>$90.00</h3>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="bstab1-area5"
+                      role="tabpanel"
+                      aria-labelledby="bstab1-area5-tab"
+                    >
+                      <h5 class="tm-pricing-name">
+                        Rates (Reducing muscular tension)
+                      </h5>
+                      <div
+                        class="tm-pricing-priceboxes tm-slider-dots tm-slider-dots-vertical"
+                      >
+                        <div class="tm-pricing-pricebox">
+                          <h2>30 <span>minutes</span></h2>
+                          <h3>$65.00</h3>
+                        </div>
+                        <div class="tm-pricing-pricebox">
+                          <h2>45 <span>minutes</span></h2>
+                          <h3>$75.00</h3>
+                        </div>
+                        <div class="tm-pricing-pricebox">
+                          <h2>60 <span>minutes</span></h2>
+                          <h3>$90.00</h3>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="bstab1-area6"
+                      role="tabpanel"
+                      aria-labelledby="bstab1-area6-tab"
+                    >
+                      <h5 class="tm-pricing-name">
+                        Rates (Post-surgical rehabilitation)
+                      </h5>
+                      <div
+                        class="tm-pricing-priceboxes tm-slider-dots tm-slider-dots-vertical"
+                      >
+                        <div class="tm-pricing-pricebox">
+                          <h2>30 <span>minutes</span></h2>
+                          <h3>$65.00</h3>
+                        </div>
+                        <div class="tm-pricing-pricebox">
+                          <h2>45 <span>minutes</span></h2>
+                          <h3>$75.00</h3>
+                        </div>
+                        <div class="tm-pricing-pricebox">
+                          <h2>60 <span>minutes</span></h2>
+                          <h3>$90.00</h3>
+                        </div>
+                        <div class="tm-pricing-pricebox">
+                          <h2>30 <span>minutes</span></h2>
+                          <h3>$65.00</h3>
+                        </div>
+                        <div class="tm-pricing-pricebox">
+                          <h2>90 <span>minutes</span></h2>
+                          <h3>$75.00</h3>
+                        </div>
+                        <div class="tm-pricing-pricebox">
+                          <h2>120 <span>minutes</span></h2>
+                          <h3>$90.00</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--// Pricing Area -->
 
         <!--  Products Area -->
         <div class="tm-section products-area tm-padding-section bg-white">
@@ -647,11 +909,8 @@
                 <div class="tm-section-title text-center">
                   <h2>Welcome to our shop</h2>
                   <p>
-                    Explore high-quality gear, tools, and essentials curated for
-                    safe, respectful, and empowered play. Whether you're a
-                    beginner or a seasoned enthusiast, our shop supports your
-                    journey with trusted products designed to enhance
-                    connection, confidence, and consent.
+                    Lorem ipsum dolor sit amet, in quodsi vulputate pro. Ius
+                    illum vocent mediocritatem an cule dicta iriure at phaedrum.
                   </p>
                 </div>
               </div>
@@ -694,7 +953,7 @@
                   <div class="tm-product-content">
                     <h5 class="tm-product-title">
                       <a href="product-details.html"
-                        >Premium Leather Restraints</a
+                        >Cosmetology Essential oil</a
                       >
                     </h5>
                     <div class="tm-product-rating">
@@ -704,7 +963,7 @@
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
                     </div>
-                    <h6 class="tm-product-price">Nationwide Delivery</h6>
+                    <h6 class="tm-product-price">$99.99 <del>$120.00</del></h6>
                   </div>
                 </div>
               </div>
@@ -744,7 +1003,7 @@
                   </div>
                   <div class="tm-product-content">
                     <h5 class="tm-product-title">
-                      <a href="product-details.html">Silk Rope Set</a>
+                      <a href="product-details.html">Lavender oil Aroma</a>
                     </h5>
                     <div class="tm-product-rating">
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
@@ -753,7 +1012,7 @@
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
                     </div>
-                    <h6 class="tm-product-price">Nationwide Delivery</h6>
+                    <h6 class="tm-product-price">$99.99</h6>
                   </div>
                 </div>
               </div>
@@ -793,7 +1052,7 @@
                   </div>
                   <div class="tm-product-content">
                     <h5 class="tm-product-title">
-                      <a href="product-details.html">Luxury Blindfold</a>
+                      <a href="product-details.html">Jojoba oil Carrie</a>
                     </h5>
                     <div class="tm-product-rating">
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
@@ -802,7 +1061,7 @@
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
                     </div>
-                    <h6 class="tm-product-price">Nationwide Delivery</h6>
+                    <h6 class="tm-product-price">$99.99</h6>
                   </div>
                 </div>
               </div>
@@ -842,7 +1101,7 @@
                   </div>
                   <div class="tm-product-content">
                     <h5 class="tm-product-title">
-                      <a href="product-details.html">Leather Flogger</a>
+                      <a href="product-details.html">White Bamboo Massage</a>
                     </h5>
                     <div class="tm-product-rating">
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
@@ -851,7 +1110,7 @@
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
                     </div>
-                    <h6 class="tm-product-price">Nationwide Delivery</h6>
+                    <h6 class="tm-product-price">$99.99</h6>
                   </div>
                 </div>
               </div>
@@ -891,9 +1150,7 @@
                   </div>
                   <div class="tm-product-content">
                     <h5 class="tm-product-title">
-                      <a href="product-details.html"
-                        >Leather Collar with Leash</a
-                      >
+                      <a href="product-details.html">Essential oils</a>
                     </h5>
                     <div class="tm-product-rating">
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
@@ -902,7 +1159,7 @@
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
                     </div>
-                    <h6 class="tm-product-price">Nationwide Delivery</h6>
+                    <h6 class="tm-product-price">$99.99</h6>
                   </div>
                 </div>
               </div>
@@ -942,7 +1199,7 @@
                   </div>
                   <div class="tm-product-content">
                     <h5 class="tm-product-title">
-                      <a href="product-details.html">Butt Plug</a>
+                      <a href="product-details.html">Cosmetic product</a>
                     </h5>
                     <div class="tm-product-rating">
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
@@ -951,7 +1208,7 @@
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
                     </div>
-                    <h6 class="tm-product-price">Nationwide Delivery</h6>
+                    <h6 class="tm-product-price">$99.99</h6>
                   </div>
                 </div>
               </div>
@@ -978,7 +1235,7 @@
             <div class="row justify-content-center">
               <div class="col-xl-7 col-lg-8 col-md-10 col-12">
                 <div class="tm-section-title text-center">
-                  <h2>Community Voices</h2>
+                  <h2>What Our Customers Say</h2>
                 </div>
               </div>
             </div>
@@ -989,19 +1246,22 @@
                   <div class="tm-testimonial-author">
                     <div class="tm-testimonial-authorimage">
                       <img
-                        src="assets/images/authors/anonymous.png"
+                        src="assets/images/authors/author-image-1.jpg"
                         alt="author image"
                       />
                     </div>
                     <div class="tm-testimonial-authorinfo">
-                      <h5>Alex M.</h5>
-                      <h6>Submissive</h6>
+                      <h5>Penny Beaird</h5>
+                      <h6>Financer</h6>
                     </div>
                   </div>
                   <div class="tm-testimonial-content">
                     <p>
-                      "This community changed the way I explore intimacy and
-                      trust. The resources are respectful and empowering."
+                      I started seeing Dr. Robinson on the recommendation of my
+                      massage therapist. Massage therapy is the science of
+                      movement and function. Massage therapy will help anybody
+                      who experiences difficulty with movement strength and
+                      pain.
                     </p>
                     <div class="tm-rating">
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
@@ -1021,27 +1281,28 @@
                   <div class="tm-testimonial-author">
                     <div class="tm-testimonial-authorimage">
                       <img
-                        src="assets/images/authors/anonymous.png"
+                        src="assets/images/authors/author-image-2.jpg"
                         alt="author image"
                       />
                     </div>
                     <div class="tm-testimonial-authorinfo">
-                      <h5>Mistress V</h5>
-                      <h6>Dominatrix</h6>
+                      <h5>Ludie Cremin</h5>
+                      <h6>Supervisor</h6>
                     </div>
                   </div>
                   <div class="tm-testimonial-content">
                     <p>
-                      "This community empowers Dominants like me to lead with
-                      care, clarity, and confidence. It’s not just about control
-                      — it’s about connection."
+                      Quae iusto consequatur consectetur velit at nulla et enim
+                      debitis. Eligendi modi consectetur laudantium. Ut quis
+                      nobis numquam omnis suscipit eum est omnis. Explicabo
+                      ipsum accusamus consectetur animi laudantium quia.
                     </p>
                     <div class="tm-rating">
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
-                      <span class="active"><i class="zmdi zmdi-star"></i></span>
+                      <span><i class="zmdi zmdi-star"></i></span>
                     </div>
                   </div>
                 </div>
@@ -1054,27 +1315,29 @@
                   <div class="tm-testimonial-author">
                     <div class="tm-testimonial-authorimage">
                       <img
-                        src="assets/images/authors/anonymous.png"
+                        src="assets/images/authors/author-image-3.jpg"
                         alt="author image"
                       />
                     </div>
                     <div class="tm-testimonial-authorinfo">
-                      <h5>Riley</h5>
-                      <h6>Switch</h6>
+                      <h5>Ottilie Wisoky</h5>
+                      <h6>Marketer</h6>
                     </div>
                   </div>
                   <div class="tm-testimonial-content">
                     <p>
-                      "As a Switch, it’s rare to find a space that celebrates
-                      both sides of my expression. BDSM COMMUNITY gives me the
-                      freedom to be all of me."
+                      Molestias dicta non laboriosam eum ut eos et. Dignissimos
+                      temporibus sit quis aut itaque vel. Maiores a est. Id ut
+                      aspernatur aliquam cumque aut ut alias accusamus. Minus
+                      aperiam fugiat tempora aut repellendus voluptatem debitis
+                      sequi.
                     </p>
                     <div class="tm-rating">
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
                       <span class="active"><i class="zmdi zmdi-star"></i></span>
-                      <span class="active"><i class="zmdi zmdi-star"></i></span>
-                      <span class="active"><i class="zmdi zmdi-star"></i></span>
+                      <span><i class="zmdi zmdi-star"></i></span>
+                      <span><i class="zmdi zmdi-star"></i></span>
                     </div>
                   </div>
                 </div>
@@ -1085,9 +1348,105 @@
         </div>
         <!--// Testimonial Area -->
 
-        <!-- Registration Information Area -->
-
-        <!--// Registration Information Area -->
+        <!-- Appointment Information Area -->
+        <div
+          class="tm-section appointment-information-area tm-padding-section bg-white"
+        >
+          <span class="bg-shape-2"
+            ><img
+              src="assets/images/icons/bg-shape-3.png"
+              alt="background shape"
+          /></span>
+          <div class="container">
+            <div class="row mt-50-reverse">
+              <div class="col-lg-6 mt-50">
+                <div class="tm-information">
+                  <div class="tm-information-timing">
+                    <h5>Opening Hours</h5>
+                    <ul>
+                      <li>Monday - Friday <span>12:00 - 17:00</span></li>
+                      <li>Saturday <span>15:00 - 18:00</span></li>
+                      <li>Sunday <span>Closed</span></li>
+                    </ul>
+                  </div>
+                  <div class="tm-information-contact">
+                    <h5>Contact Details</h5>
+                    <ul>
+                      <li>
+                        <b>Address </b>2726 Avenue Papineau Montreal, QC, Canada
+                      </li>
+                      <li><b>Phone </b>1-800-915-6270</li>
+                      <li>
+                        <b>Email </b>info@example.com
+                        <br />support@dialiarmttherapy.com
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 mt-50">
+                <div class="tm-appointment">
+                  <h2>Make an Appointment</h2>
+                  <form action="#" class="tm-form">
+                    <div class="tm-form-inner">
+                      <div class="tm-form-field tm-form-fieldhalf">
+                        <input
+                          type="text"
+                          required="required"
+                          placeholder="Name*"
+                        />
+                      </div>
+                      <div class="tm-form-field tm-form-fieldhalf">
+                        <input
+                          type="email"
+                          required="required"
+                          placeholder="Email*"
+                        />
+                      </div>
+                      <div class="tm-form-field tm-form-fieldhalf">
+                        <select name="select-services">
+                          <option value="0">Select Service</option>
+                          <option value="a">
+                            Reducing or eliminating pain
+                          </option>
+                          <option value="b">Improving joint mobility</option>
+                          <option value="c">Circulatory problems</option>
+                          <option value="d">
+                            Improving lymphatic drainage
+                          </option>
+                          <option value="e">Reducing muscular tension</option>
+                          <option value="f">
+                            Post-surgical rehabilitation
+                          </option>
+                        </select>
+                      </div>
+                      <div class="tm-form-field tm-form-fieldhalf">
+                        <input
+                          type="text"
+                          required="required"
+                          data-toggle="datepicker"
+                          placeholder="Select Date"
+                        />
+                      </div>
+                      <div class="tm-form-field">
+                        <textarea
+                          name="message"
+                          cols="30"
+                          rows="5"
+                          placeholder="Message"
+                        ></textarea>
+                      </div>
+                      <div class="tm-form-field">
+                        <button type="submit" class="tm-button">Submit</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--// Appointment Information Area -->
 
         <!-- Latest Blog Area -->
         <div class="tm-section latest-blog-area tm-padding-section bg-white">
@@ -1556,8 +1915,7 @@
         <div class="footer-bottomarea">
           <div class="container">
             <p class="footer-copyright">
-              Copyright 2020 by <a href="#">NATIONAL BDSM COMMUNITY BOARD</a>.
-              All rights reserved
+              Copyright 2020 by <a href="#">NATIONAL BDSM COMMUNITY BOARD</a>. All rights reserved
             </p>
           </div>
         </div>
@@ -1740,8 +2098,8 @@
     <script src="assets/js/jquery.ripples.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/auth-redirect.js"></script>
-    <!-- Language switcher script -->
-    <script src="assets/js/language-switcher.js"></script>
     <!--// Js Files -->
   </body>
+
+  <!-- Mirrored from thememarch.com/demo/html/dialia/dialia/index-ripple-bg.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Apr 2025 09:25:50 GMT -->
 </html>

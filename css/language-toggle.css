@@ -1,0 +1,37 @@
+/* Language toggle dropdown styles */
+.language-dropdown {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  min-width: 150px;
+}
+
+.language-option {
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.language-option:hover {
+  background-color: #f5f5f5;
+}
+
+/* Make sure the language toggle is clickable */
+.language-toggle {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .language-dropdown {
+    width: 100%;
+    left: 0 !important;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+}

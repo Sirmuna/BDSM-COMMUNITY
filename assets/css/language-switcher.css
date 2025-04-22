@@ -1,0 +1,204 @@
+/**
+ * Language Switcher Styles
+ * Styles for both desktop and mobile language selectors
+ */
+
+/* Desktop Language Switcher */
+.language-switcher {
+  position: relative;
+  margin-left: 15px;
+  z-index: 1000; /* Ensure dropdown appears above other elements */
+  display: inline-block;
+}
+
+.language-switcher-wrapper {
+  position: relative;
+}
+
+/* Language Toggle Button */
+.language-toggle {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  color: #333;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+  gap: 5px;
+}
+
+.language-toggle:hover {
+  color: #e73232; /* Match site theme color */
+}
+
+.language-toggle img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.language-toggle i {
+  margin-left: 5px;
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+/* Ensure Font Awesome icons display correctly */
+.fa-chevron-down {
+  display: inline-block !important;
+  font: normal normal normal 14px/1 'Font Awesome 6 Free';
+  font-weight: 900;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dropdown styles */
+.language-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  min-width: 150px;
+  z-index: 1001;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  display: none;
+}
+
+.language-dropdown.active,
+.language-dropdown.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  display: block;
+}
+
+.language-dropdown li {
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.language-dropdown li:last-child {
+  border-bottom: none;
+}
+
+.language-dropdown a,
+.language-option {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  gap: 8px;
+}
+
+.language-dropdown a:hover,
+.language-option:hover,
+.language-option:active {
+  background-color: #f5f5f5;
+  color: #e73232; /* Match site theme color */
+}
+
+.language-dropdown img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.language-option i {
+  margin-right: 10px;
+}
+
+/* Active state for toggle button */
+.language-toggle.active i,
+.language-btn.active .fa-caret-down {
+  transform: rotate(180deg);
+}
+
+/* Mobile Language Switcher */
+.language-btn {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #333;
+  font-size: 14px;
+  touch-action: manipulation; /* Improve touch behavior */
+  gap: 5px;
+}
+
+.language-btn:hover,
+.language-btn:focus {
+  background-color: #f5f5f5;
+  outline: none;
+  color: #e73232; /* Match site theme color */
+}
+
+.language-btn img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.language-btn i {
+  margin-right: 8px;
+}
+
+.language-btn .fa-caret-down {
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .language-switcher-wrapper {
+    display: none; /* Hide desktop version on mobile */
+  }
+}
+
+@media (min-width: 992px) {
+  /* Hide mobile version on desktop */
+  .language-btn,
+  .mobile-language-switcher {
+    display: none;
+  }
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 767px) {
+  .language-switcher {
+    margin-left: 10px;
+  }
+  
+  .language-btn {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+  
+  .language-dropdown {
+    min-width: 140px;
+    right: -10px; /* Adjust position to ensure visibility */
+  }
+  
+  .language-option {
+    padding: 12px 15px; /* Larger touch target */
+  }
+}

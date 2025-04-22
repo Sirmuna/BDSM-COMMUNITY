@@ -24,14 +24,31 @@ document.addEventListener("DOMContentLoaded", function () {
       localStorage.setItem("bdsm_isLoggedIn", "false");
 
       // Only redirect if we're not already on a login/register page
-      const currentPage = window.location.pathname.toLowerCase();
-      if (!currentPage.includes("login") && !currentPage.includes("register")) {
-        // Redirect to login page
-        window.location.href = "/login.html";
+      // AND we're not on a translated page (language subdirectory)
+      const currentPath = window.location.pathname.toLowerCase();
+      
+      // Skip auth redirects for these cases:
+      const isLoginPage = currentPath.includes("login");
+      const isRegisterPage = currentPath.includes("register");
+      const isLanguagePage = /\/[a-z]{2}\//.test(currentPath); // Matches /fr/, /de/, etc.
+      
+      // Set a flag so we don't constantly redirect back and forth
+      const redirectAttempted = sessionStorage.getItem("redirectAttempted") === "true";
+      
+      if (!isLoginPage && !isRegisterPage && !isLanguagePage && !redirectAttempted) {
+        // Mark that we've attempted a redirect to prevent loops
+        sessionStorage.setItem("redirectAttempted", "true");
+        
+        // Redirect to login page with return URL
+        const returnUrl = encodeURIComponent(window.location.pathname);
+        window.location.href = `/login.html?returnUrl=${returnUrl}`;
       }
     } else {
       // Update last login time for active users
       localStorage.setItem("bdsm_lastLoginTime", currentTime.toString());
+      
+      // Clear the redirect attempt flag since user is authenticated
+      sessionStorage.removeItem("redirectAttempted");
     }
   };
 

@@ -2637,6 +2637,17 @@ button.tm-videobutton:hover span {
   text-decoration: underline;
 }
 
+/*-- about image --*/
+.about-image{
+  display: flex;
+  width: 100%;
+}
+#abt-img-2{
+z-index: -1;
+opacity: 10%;
+}
+/*-- about image --*/
+
 /**
  * Pagination
  */

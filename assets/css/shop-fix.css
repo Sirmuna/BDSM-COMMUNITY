@@ -1,0 +1,207 @@
+/* Shop Page Layout Fixes */
+
+/* Fix product grid layout */
+.product-grid-view {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.product-grid-view .product-item {
+  padding: 0 15px;
+  margin-bottom: 30px;
+}
+
+/* Fix product card structure */
+.tm-product {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tm-product-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.tm-product-content {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Fix product actions */
+.tm-product-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.tm-product-actions li {
+  margin-bottom: 5px;
+  list-style: none;
+}
+
+.tm-product-actions li button,
+.tm-product-actions li a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #333333;
+  transition: all 0.3s ease;
+}
+
+.tm-product-actions li button:hover,
+.tm-product-actions li a:hover {
+  background-color: #d50000;
+  color: #ffffff;
+}
+
+/* Fix product title and rating */
+.tm-product-title {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.tm-product-rating {
+  margin-bottom: 10px;
+  color: #ffc107;
+}
+
+.tm-product-rating .review-count {
+  color: #666666;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+/* Fix product description */
+.tm-product-description {
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #666666;
+  flex-grow: 1;
+}
+
+/* Fix add to cart button */
+.add-to-cart-btn {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+/* Fix list view */
+.product-list-view .tm-product {
+  flex-direction: row;
+}
+
+.product-list-view .tm-product-image {
+  width: 30%;
+}
+
+.product-list-view .tm-product-content {
+  width: 70%;
+}
+
+/* Fix sidebar widgets */
+.widget {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+}
+
+.widget-title {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+/* Fix pagination */
+.tm-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.tm-pagination ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tm-pagination ul li {
+  margin: 0 5px;
+}
+
+.tm-pagination ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  color: #333333;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.tm-pagination ul li.active a,
+.tm-pagination ul li a:hover {
+  background-color: #d50000;
+  color: #ffffff;
+}
+
+/* Fix shop toolbar */
+.shop-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+/* Fix quick view modal */
+#quickViewModal .modal-content {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#quickViewModal .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  opacity: 1;
+  width: 30px;
+  height: 30px;
+  background-color: #d50000;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Remove new badge */
+.badge-new {
+  display: none !important;
+}

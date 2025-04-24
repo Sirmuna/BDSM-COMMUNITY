@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - BDSM COMMUNITY</title>
+    <title>BDSM COMMUNITY</title>
     <!-- Include your existing CSS files -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/fontawesome.min.css">
@@ -17,136 +17,127 @@
     <!-- FontAwesome for the eye icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .password-field {
-            position: relative;
-        }
-        .password-toggle {
-            cursor: pointer;
-            background: transparent;
-            border: none;
-        }
-        .input-group .password-toggle {
+        /* Preloader styles */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
             display: flex;
+            justify-content: center;
             align-items: center;
-            padding: 0 15px;
-            border-left: 1px solid #ced4da;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
         }
-        .input-group .password-toggle i {
-            font-size: 16px;
-            color: #666;
+        
+        .preloader-content {
+            text-align: center;
+            color: white;
         }
-        /* Password requirements styling */
-        .password-requirements {
-            margin-top: 10px;
-            padding: 10px;
-            border: 1px solid #ddd;
+        
+        .preloader-spinner {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #e91e63;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Age verification styles */
+        .age-verification {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9998;
+        }
+        
+        .age-verification-content {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+        
+        .age-verification-content h2 {
+            margin-bottom: 20px;
+        }
+        
+        .age-verification-content p {
+            margin-bottom: 25px;
+        }
+        
+        .age-verification-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .age-verification-buttons button {
+            padding: 10px 25px;
+            border: none;
             border-radius: 5px;
-            background-color: #f9f9f9;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
         }
-        .password-requirements ul {
-            padding-left: 20px;
-            margin-bottom: 0;
+        
+        .age-yes {
+            background-color: #e91e63;
+            color: white;
         }
-        .text-success {
-            color: #28a745 !important;
+        
+        .age-no {
+            background-color: #f5f5f5;
+            color: #333;
         }
-        .text-danger {
-            color: #dc3545 !important;
+        
+        .age-yes:hover {
+            background-color: #d81b60;
+        }
+        
+        .age-no:hover {
+            background-color: #e0e0e0;
         }
     </style>
 </head>
 <body>
-    <!-- Include your header -->
-    <header class="header-area">
-        <!-- Your existing header code -->
-    </header>
-
-    <!-- Registration Form Section -->
-    <section class="auth-section section-padding">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="auth-form-wrapper">
-                        <div class="auth-header text-center">
-                            <img src="assets/images/logo/logo-red.png" alt="BDSM COMMUNITY logo" class="mb-4">
-                            <h2>Create Your Account</h2>
-                            <p>Join our community and explore exclusive content</p>
-                        </div>
-                        
-                        <form id="registration-form" class="auth-form">
-                            <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" id="username" name="username" class="form-control" required>
-                                <small class="form-text text-muted">Choose a unique username (4-20 characters)</small>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" name="email" class="form-control" required>
-                                <small class="form-text text-muted">We'll never share your email with anyone else</small>
-                            </div>
-                            
-                            <div class="form-group password-field">
-                                <label for="password">Password</label>
-                                <div class="input-group">
-                                    <input type="password" id="password" name="password" class="form-control" required>
-                                    <div class="input-group-append">
-                                        <!-- <button type="button" class="password-toggle" aria-label="Toggle password visibility">
-                                            <i class="fa fa-eye-slash"></i>
-                                        </button> -->
-                                    </div>
-                                </div>
-                                <small class="form-text text-muted">At least 8 characters with letters and numbers</small>
-                                <div class="password-requirements">
-                                    <p class="mb-1">Password must contain:</p>
-                                    <ul>
-                                        <li id="length-check" class="text-muted">At least 8 characters</li>
-                                        <li id="letter-check" class="text-muted">At least one letter</li>
-                                        <li id="number-check" class="text-muted">At least one number</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group password-field">
-                                <label for="confirm-password">Confirm Password</label>
-                                <div class="input-group">
-                                    <input type="password" id="confirm-password" name="confirm-password" class="form-control" required>
-                                    <!-- <div class="input-group-append">
-                                        <button type="button" class="password-toggle" aria-label="Toggle password visibility">
-                                            <i class="fa fa-eye-slash"></i>
-                                        </button> -->
-                                    </div>
-                                </div>
-                                <small id="password-match" class="form-text"></small>
-                            </div>
-                            
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="terms" required>
-                                <label class="form-check-label" for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
-                            </div>
-                            
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="age-confirmation" required>
-                                <label class="form-check-label" for="age-confirmation">I confirm that I am at least 18 years old</label>
-                            </div>
-                            
-                            <button type="submit" class="tm-button w-100">Register</button>
-                            
-                            <div class="auth-alt-option text-center mt-4">
-                                <p>Already have an account? <a href="login.html">Log In</a></p>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-spinner"></div>
+            <p>Loading content...</p>
+        </div>
+    </div>
+    
+    <!-- Age Verification -->
+    <div class="age-verification" id="age-verification">
+        <div class="age-verification-content">
+            <img src="assets/images/logo/logo-red.png" alt="BDSM COMMUNITY logo" class="mb-4" style="max-width: 200px;">
+            <h2>Age Verification</h2>
+            <p>This website contains adult content and is only suitable for those who are 18 years or older. By entering, you confirm that you are at least 18 years of age.</p>
+            <div class="age-verification-buttons">
+                <button class="age-yes" id="age-yes">I am 18 or older</button>
+                <button class="age-no" id="age-no">I am under 18</button>
             </div>
         </div>
-    </section>
-
-    <!-- Include your footer -->
-    <footer class="footer-area">
-        <!-- Your existing footer code -->
-    </footer>
+    </div>
 
     <!-- Include your existing JS files -->
     <script src="assets/js/jquery.min.js"></script>
@@ -157,78 +148,68 @@
     <script src="assets/js/uikit.min.js"></script>
     <script src="assets/js/uikit-icons.min.js"></script>
     <script src="assets/js/main.js"></script>
-    <!-- Age verification script -->
-    <script src="assets/js/age-verification.js"></script>
-    <!-- Auth script - Load this BEFORE the custom script -->
-    <script src="assets/js/auth.js"></script>
-    <!-- Password validation script -->
+    
     <script>
         $(document).ready(function() {
-            // Password visibility toggle
-            $('.password-toggle').click(function() {
-                const passwordInput = $(this).closest('.input-group').find('input');
-                const icon = $(this).find('i');
+            // Set up age verification handlers
+            function setupAgeVerification() {
+                $('#age-yes').on('click touchend', function(e) {
+                    e.preventDefault();
+                    // Store in localStorage that age has been verified
+                    localStorage.setItem('ageVerified', 'true');
+                    // Redirect directly to index.html
+                    window.location.href = 'index.html';
+                });
                 
-                if (passwordInput.attr('type') === 'password') {
-                    passwordInput.attr('type', 'text');
-                    icon.removeClass('fa-eye-slash').addClass('fa-eye');
-                } else {
-                    passwordInput.attr('type', 'password');
-                    icon.removeClass('fa-eye').addClass('fa-eye-slash');
-                }
-            });
+                $('#age-no').on('click touchend', function(e) {
+                    e.preventDefault();
+                    // Redirect to an appropriate page for underage users
+                    window.location.href = 'https://www.google.com';
+                });
+            }
             
-            // Password validation
-            $('#password').on('input', function() {
-                const password = $(this).val();
+            // Function to hide preloader
+            function hidePreloader() {
+                $('#preloader').fadeOut();
                 
-                // Check length
-                if (password.length >= 8) {
-                    $('#length-check').addClass('text-success').removeClass('text-muted');
-                } else {
-                    $('#length-check').removeClass('text-success').addClass('text-muted');
-                }
-                
-                // Check for letters
-                if (/[a-zA-Z]/.test(password)) {
-                    $('#letter-check').addClass('text-success').removeClass('text-muted');
-                } else {
-                    $('#letter-check').removeClass('text-success').addClass('text-muted');
-                }
-                
-                // Check for numbers
-                if (/\d/.test(password)) {
-                    $('#number-check').addClass('text-success').removeClass('text-muted');
-                } else {
-                    $('#number-check').removeClass('text-success').addClass('text-muted');
-                }
-                
-                // Check password match
-                checkPasswordMatch();
-            });
-            
-            // Check password match
-            $('#confirm-password').on('input', checkPasswordMatch);
-            
-            function checkPasswordMatch() {
-                const password = $('#password').val();
-                const confirmPassword = $('#confirm-password').val();
-                
-                if (confirmPassword.length > 0) {
-                    if (password === confirmPassword) {
-                        $('#password-match').text('Passwords match').addClass('text-success').removeClass('text-danger');
-                    } else {
-                        $('#password-match').text('Passwords do not match').addClass('text-danger').removeClass('text-success');
-                    }
-                } else {
-                    $('#password-match').text('');
+                // Check if age was previously verified
+                if (localStorage.getItem('ageVerified') === 'true') {
+                    // If age was verified, redirect directly to index.html
+                    window.location.href = 'index.html';
                 }
             }
             
-            // IMPORTANT: Don't add a submit handler here - let auth.js handle the form submission
-            // This ensures proper functionality including the redirect to login page
+            // Set up age verification
+            setupAgeVerification();
+            
+            // Add direct event listeners for iOS compatibility
+            document.getElementById('age-yes').addEventListener('touchend', function(e) {
+                e.preventDefault();
+                localStorage.setItem('ageVerified', 'true');
+                // Redirect directly to index.html
+                window.location.href = 'index.html';
+            }, false);
+            
+            document.getElementById('age-no').addEventListener('touchend', function(e) {
+                e.preventDefault();
+                window.location.href = 'https://www.google.com';
+            }, false);
+            
+            // IMPORTANT: Force preloader to exit after exactly 10 seconds
+            setTimeout(function() {
+                console.log("Maximum preloader time (10s) reached");
+                hidePreloader();
+            }, 10000);
+            
+            // Try to load images in parallel
+            let imgCount = $('img').length;
+            if (imgCount > 0) {
+                $('img').each(function() {
+                    const img = new Image();
+                    img.src = $(this).attr('src');
+                });
+            }
         });
     </script>
 </body>
-</html>
-</qodoArtifact>
+</html></qodoArtifact>

@@ -1,11 +1,40 @@
 /**
  * Age Verification Script for BDSM COMMUNITY
  * Shows an age verification modal for first-time visitors
+ * Enhanced to work on all devices including iOS
  */
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Check if user has already verified age
-  if (!localStorage.getItem("age_verified")) {
+(function() {
+  // Function to check if user has already verified age
+  function checkAgeVerification() {
+    return localStorage.getItem("age_verified") === "true";
+  }
+  
+  // Function to set age verification status with expiration
+  function setAgeVerified() {
+    localStorage.setItem("age_verified", "true");
+    
+    // Set an expiration date (30 days)
+    const expirationDate = new Date();
+    expirationDate.setDate(expirationDate.getDate() + 30);
+    localStorage.setItem("age_verified_expiration", expirationDate.toString());
+  }
+  
+  // Function to check if verification has expired
+  function isAgeVerificationExpired() {
+    const expirationDate = localStorage.getItem("age_verified_expiration");
+    if (!expirationDate) return false;
+    
+    return new Date() > new Date(expirationDate);
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Check if age is already verified and not expired
+    if (checkAgeVerification() && !isAgeVerificationExpired()) {
+      // User has already verified age and it hasn't expired
+      return;
+    }
+    
     // Create age verification modal
     createAgeVerificationModal();
 
@@ -14,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Set up event listeners
     setupAgeVerificationListeners();
-  }
+  });
 
   function createAgeVerificationModal() {
     // Create modal HTML
@@ -54,6 +83,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    opacity: 1;
+                    transition: opacity 0.3s ease;
+                    -webkit-overflow-scrolling: touch; /* Better iOS scrolling */
                 }
                 
                 .age-verification-container {
@@ -96,6 +128,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     border: 1px solid #e73c3e;
                 }
                 
+                /* Ensure buttons are easily tappable on mobile */
+                .tm-button {
+                    min-height: 44px; /* iOS minimum recommended touch target size */
+                    cursor: pointer;
+                    -webkit-tap-highlight-color: rgba(0,0,0,0); /* Remove tap highlight on iOS */
+                }
+                
                 @media (min-width: 576px) {
                     .age-verification-buttons {
                         flex-direction: row;
@@ -123,33 +162,63 @@ document.addEventListener("DOMContentLoaded", function () {
     // "Yes" button - user is 18 or older
     const yesButton = document.getElementById("age-verification-yes");
     if (yesButton) {
-      yesButton.addEventListener("click", function () {
-        // Set age verification flag in localStorage
-        localStorage.setItem("age_verified", "true");
-
-        // Hide the modal
-        hideAgeVerificationModal();
+      // Add both click and touchend events for better iOS compatibility
+      yesButton.addEventListener("click", handleYesClick);
+      yesButton.addEventListener("touchend", function(e) {
+        e.preventDefault(); // Prevent double-firing
+        handleYesClick(e);
       });
     }
 
     // "No" button - user is under 18
     const noButton = document.getElementById("age-verification-no");
     if (noButton) {
-      noButton.addEventListener("click", function () {
-        // Redirect to an appropriate page (e.g., Google)
-        window.location.href = "https://www.google.com";
+      // Add both click and touchend events for better iOS compatibility
+      noButton.addEventListener("click", handleNoClick);
+      noButton.addEventListener("touchend", function(e) {
+        e.preventDefault(); // Prevent double-firing
+        handleNoClick(e);
       });
     }
+  }
+  
+  // Function to handle "Yes" button click
+  function handleYesClick(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    
+    // Set age verification flag in localStorage with expiration
+    setAgeVerified();
+
+    // Hide the modal
+    hideAgeVerificationModal();
+  }
+  
+  // Function to handle "No" button click
+  function handleNoClick(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    
+    // Redirect to an appropriate page (e.g., Google)
+    window.location.href = "https://www.google.com";
   }
 
   function hideAgeVerificationModal() {
     const overlay = document.getElementById("age-verification-overlay");
     if (overlay) {
-      // Remove the overlay
-      overlay.remove();
-
-      // Restore scrolling
-      document.body.style.overflow = "";
+      // Add a fade-out effect
+      overlay.style.opacity = "0";
+      
+      // Remove the overlay after transition
+      setTimeout(function() {
+        overlay.remove();
+        // Restore scrolling
+        document.body.style.overflow = "";
+      }, 300);
     }
   }
-});
+})();

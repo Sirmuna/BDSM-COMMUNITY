@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BDSM COMMUNITY</title>
     <!-- Include your existing CSS files -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -52,68 +52,109 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* Age verification styles */
-        .age-verification {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9998;
+        /* Age verification styles - using !important to prevent overrides */
+        #age-verification.age-verification {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            background-color: rgba(0, 0, 0, 0.95) !important;
+            z-index: 9998 !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
         }
         
-        .age-verification-content {
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 30px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
+        #age-verification .age-verification-content {
+            background-color: #fff !important;
+            border-radius: 10px !important;
+            padding: 20px !important;
+            max-width: 500px !important;
+            width: 90% !important;
+            text-align: center !important;
         }
         
-        .age-verification-content h2 {
-            margin-bottom: 20px;
+        #age-verification .age-verification-content h2 {
+            margin-bottom: 20px !important;
+            font-size: 22px !important;
         }
         
-        .age-verification-content p {
-            margin-bottom: 25px;
+        #age-verification .age-verification-content p {
+            margin-bottom: 25px !important;
+            font-size: 14px !important;
         }
         
-        .age-verification-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
+        #age-verification .age-verification-buttons {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 10px !important;
+            margin: 0 auto !important;
+            max-width: 300px !important;
         }
         
-        .age-verification-buttons button {
-            padding: 10px 25px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
+        #age-verification .age-verification-buttons button {
+            padding: 10px !important;
+            border: none !important;
+            border-radius: 5px !important;
+            cursor: pointer !important;
+            font-weight: bold !important;
+            transition: all 0.3s ease !important;
+            font-size: 14px !important;
+            width: 100% !important;
+            min-height: 44px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
         }
         
-        .age-yes {
-            background-color: #e91e63;
-            color: white;
+        #age-verification .age-yes {
+            background-color: #e91e63 !important;
+            color: white !important;
         }
         
-        .age-no {
-            background-color: #f5f5f5;
-            color: #333;
+        #age-verification .age-no {
+            background-color: #f5f5f5 !important;
+            color: #333 !important;
         }
         
-        .age-yes:hover {
-            background-color: #d81b60;
+        #age-verification .age-yes:hover {
+            background-color: #d81b60 !important;
         }
         
-        .age-no:hover {
-            background-color: #e0e0e0;
+        #age-verification .age-no:hover {
+            background-color: #e0e0e0 !important;
+        }
+        
+        /* Media query for larger screens */
+        @media (min-width: 576px) {
+            #age-verification .age-verification-content {
+                padding: 30px !important;
+            }
+            
+            #age-verification .age-verification-content h2 {
+                font-size: 24px !important;
+            }
+            
+            #age-verification .age-verification-content p {
+                font-size: 16px !important;
+            }
+            
+            #age-verification .age-verification-buttons {
+                flex-direction: row !important;
+                justify-content: center !important;
+                max-width: 100% !important;
+            }
+            
+            #age-verification .age-verification-buttons button {
+                width: auto !important;
+                min-width: 120px !important;
+                padding: 10px 15px !important;
+                font-size: 16px !important;
+            }
         }
     </style>
 </head>
@@ -129,12 +170,12 @@
     <!-- Age Verification -->
     <div class="age-verification" id="age-verification">
         <div class="age-verification-content">
-            <img src="assets/images/logo/logo-red.png" alt="BDSM COMMUNITY logo" class="mb-4" style="max-width: 200px;">
+            <img src="assets/images/logo/logo-red.png" alt="BDSM COMMUNITY logo" class="mb-4" style="max-width: 150px;">
             <h2>Age Verification</h2>
             <p>This website contains adult content and is only suitable for those who are 18 years or older. By entering, you confirm that you are at least 18 years of age.</p>
             <div class="age-verification-buttons">
-                <button class="age-yes" id="age-yes">I am 18 or older</button>
-                <button class="age-no" id="age-no">I am under 18</button>
+                <button class="age-yes" id="age-yes" style="font-size: 14px !important;">I am 18+</button>
+                <button class="age-no" id="age-no" style="font-size: 14px !important;">I am under 18</button>
             </div>
         </div>
     </div>
@@ -150,55 +191,101 @@
     <script src="assets/js/main.js"></script>
     
     <script>
+        // Immediately set button text to ensure it's correct
+        document.addEventListener('DOMContentLoaded', function() {
+            // Force set the button text
+            var yesButton = document.getElementById('age-yes');
+            var noButton = document.getElementById('age-no');
+            
+            if (yesButton) {
+                yesButton.innerHTML = 'I am 18+';
+                yesButton.style.fontSize = '14px';
+                yesButton.style.padding = '10px';
+                yesButton.style.whiteSpace = 'nowrap';
+                yesButton.style.overflow = 'hidden';
+                yesButton.style.textOverflow = 'ellipsis';
+            }
+            
+            if (noButton) {
+                noButton.innerHTML = 'I am under 18';
+                noButton.style.fontSize = '14px';
+                noButton.style.padding = '10px';
+                noButton.style.whiteSpace = 'nowrap';
+                noButton.style.overflow = 'hidden';
+                noButton.style.textOverflow = 'ellipsis';
+            }
+        });
+
         $(document).ready(function() {
-            // Set up age verification handlers
-            function setupAgeVerification() {
-                $('#age-yes').on('click touchend', function(e) {
-                    e.preventDefault();
-                    // Store in localStorage that age has been verified
-                    localStorage.setItem('ageVerified', 'true');
-                    // Redirect directly to index.html
-                    window.location.href = 'index.html';
-                });
-                
-                $('#age-no').on('click touchend', function(e) {
-                    e.preventDefault();
-                    // Redirect to an appropriate page for underage users
-                    window.location.href = 'https://www.google.com';
+            // Force set the button text again with jQuery
+            $('#age-yes').html('I am 18+').css({
+                'font-size': '14px',
+                'padding': '10px',
+                'white-space': 'nowrap',
+                'overflow': 'hidden',
+                'text-overflow': 'ellipsis'
+            });
+            
+            $('#age-no').html('I am under 18').css({
+                'font-size': '14px',
+                'padding': '10px',
+                'white-space': 'nowrap',
+                'overflow': 'hidden',
+                'text-overflow': 'ellipsis'
+            });
+            
+            // Media query for larger screens
+            if (window.matchMedia('(min-width: 576px)').matches) {
+                $('#age-yes, #age-no').css({
+                    'font-size': '16px',
+                    'padding': '10px 15px'
                 });
             }
             
-            // Function to hide preloader
-            function hidePreloader() {
-                $('#preloader').fadeOut();
+            // Set up age verification handlers
+            $('#age-yes').on('click', function(e) {
+                e.preventDefault();
+                // Store in localStorage that age has been verified
+                localStorage.setItem('age_verified', 'true');
                 
-                // Check if age was previously verified
-                if (localStorage.getItem('ageVerified') === 'true') {
-                    // If age was verified, redirect directly to index.html
+                // Set a timestamp for when verification occurred
+                localStorage.setItem('age_verified_time', new Date().getTime());
+                
+                // Redirect to index.html
+                window.location.href = 'index.html';
+            });
+            
+            $('#age-no').on('click', function(e) {
+                e.preventDefault();
+                // Redirect to an appropriate page for underage users
+                window.location.href = 'https://www.google.com';
+            });
+            
+            // Check if we came from a redirect
+            var fromRedirect = sessionStorage.getItem('from_redirect');
+            
+            // Check if age was previously verified
+            if (localStorage.getItem('age_verified') === 'true') {
+                // Hide the age verification
+                $('#age-verification').hide();
+                
+                // If we didn't come from a redirect, go to index
+                if (!fromRedirect) {
+                    // Set the redirect flag to prevent loops
+                    sessionStorage.setItem('from_redirect', 'true');
+                    
+                    // Redirect to index.html
                     window.location.href = 'index.html';
+                } else {
+                    // Clear the redirect flag
+                    sessionStorage.removeItem('from_redirect');
+                    console.log('Already redirected once, staying on register.html');
                 }
             }
             
-            // Set up age verification
-            setupAgeVerification();
-            
-            // Add direct event listeners for iOS compatibility
-            document.getElementById('age-yes').addEventListener('touchend', function(e) {
-                e.preventDefault();
-                localStorage.setItem('ageVerified', 'true');
-                // Redirect directly to index.html
-                window.location.href = 'index.html';
-            }, false);
-            
-            document.getElementById('age-no').addEventListener('touchend', function(e) {
-                e.preventDefault();
-                window.location.href = 'https://www.google.com';
-            }, false);
-            
-            // IMPORTANT: Force preloader to exit after exactly 10 seconds
+            // Force preloader to exit after exactly 10 seconds
             setTimeout(function() {
-                console.log("Maximum preloader time (10s) reached");
-                hidePreloader();
+                $('#preloader').fadeOut();
             }, 10000);
             
             // Try to load images in parallel

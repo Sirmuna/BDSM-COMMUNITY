@@ -11,7 +11,7 @@
       material: "leather",
       images: [
         "assets/images/product/bondage-set.jpeg",
-        "assets/images/product/bondage-set-2.jpeg",
+        "assets/images/product/bondage-set.jpeg",
       ],
       rating: 5,
       description:
@@ -23,8 +23,8 @@
       category: "sensory",
       material: "fabric",
       images: [
-        "assets/images/product/cat-mask.jpeg",
-        "assets/images/product/cat-mask-2.jpeg",
+        "assets/images/product/blind-fold.jpeg",
+        "assets/images/product/blind-fold.jpeg",
       ],
       rating: 4,
       description:
@@ -32,12 +32,12 @@
     },
     {
       id: 3,
-      name: "Silk Rope Set",
-      category: "restraints",
-      material: "rope",
+      name: "Latex wear",
+      category: "wearables",
+      material: "latex",
       images: [
         "assets/images/product/latex-wear.jpeg",
-        "assets/images/product/latex-wear-2.jpeg",
+        "assets/images/product/latex-wear.jpeg",
       ],
       rating: 5,
       description:
@@ -45,16 +45,16 @@
     },
     {
       id: 4,
-      name: "Leather Paddle",
-      category: "impact",
+      name: "Bondage Wears",
+      category: "wearables",
       material: "leather",
       images: [
-        "assets/images/product/paddle.jpeg",
-        "assets/images/product/paddle-2.jpeg",
+        "assets/images/product/bondage-wears.jpeg",
+        "assets/images/product/bondage-wears.jpeg",
       ],
       rating: 4,
       description:
-        "Handcrafted leather paddle with a comfortable grip handle. Perfect for impact play.",
+        "Premium Bondage wears with a comfortable grip. Perfect for impact play.",
     },
     {
       id: 5,
@@ -62,8 +62,8 @@
       category: "wearables",
       material: "leather",
       images: [
-        "assets/images/product/collar.jpeg",
-        "assets/images/product/collar-2.jpeg",
+        "assets/images/product/collared.jpeg",
+        "assets/images/product/collared.jpeg",
       ],
       rating: 5,
       description:
@@ -76,9 +76,9 @@
       material: "fabric",
       images: [
         "assets/images/product/feather.jpeg",
-        "assets/images/product/feather-2.jpeg",
+        "assets/images/product/feather.jpeg",
       ],
-      rating: 3,
+      rating: 5,
       description:
         "Soft feather tickler for gentle sensory play. Creates delightful sensations across the skin.",
     },
@@ -88,8 +88,8 @@
       category: "beginners",
       material: "mixed",
       images: [
-        "assets/images/product/beginner-kit.jpeg",
-        "assets/images/product/beginner-kit-2.jpeg",
+        "assets/images/product/beginners-kit.jpeg",
+        "assets/images/product/beginners-kit.jpeg",
       ],
       rating: 5,
       description:
@@ -101,8 +101,8 @@
       category: "impact",
       material: "leather",
       images: [
-        "assets/images/product/flogger.jpeg",
-        "assets/images/product/flogger-2.jpeg",
+        "assets/images/product/whip.jpeg",
+        "assets/images/product/whip.jpeg",
       ],
       rating: 4,
       description:
@@ -114,8 +114,8 @@
       category: "accessories",
       material: "silicone",
       images: [
-        "assets/images/product/gag.jpeg",
-        "assets/images/product/gag-2.jpeg",
+        "assets/images/product/ball-gag.jpeg",
+        "assets/images/product/ball-gag.jpeg",
       ],
       rating: 4,
       description:
@@ -127,8 +127,8 @@
       category: "restraints",
       material: "leather",
       images: [
-        "assets/images/product/wrist-cuffs.jpeg",
-        "assets/images/product/wrist-cuffs-2.jpeg",
+        "assets/images/product/handcuff.jpeg",
+        "assets/images/product/handcuff.jpeg",
       ],
       rating: 5,
       description:
@@ -153,8 +153,8 @@
       category: "wearables",
       material: "leather",
       images: [
-        "assets/images/product/mask.jpeg",
-        "assets/images/product/mask-2.jpeg",
+        "assets/images/product/cat-mask.jpeg",
+        "assets/images/product/cat-mask.jpeg",
       ],
       rating: 5,
       description:
@@ -404,7 +404,7 @@
                 <a href="#" class="tm-button order-via-whatsapp" data-product-id="${
                   product.id
                 }">
-                    <i class="fa fa-whatsapp"></i> Order via WhatsApp
+                    <i class="fa-brands fa-whatsapp"></i> Order via WhatsApp
                 </a>
             </div>
         `);

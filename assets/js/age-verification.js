@@ -36,7 +36,6 @@ function showAgeVerification() {
   modal.style.textAlign = "center";
   modal.style.boxShadow = "0 0 20px rgba(0, 0, 0, 0.3)";
 
-  // Add content to modal with BDSM image at the top
   modal.innerHTML = `
         <div class="age-verification-content">
             <div style="margin-bottom: 20px;">

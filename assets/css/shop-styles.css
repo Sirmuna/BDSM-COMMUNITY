@@ -895,7 +895,12 @@
   }
 }
 
+/* Hide filters sidebar on tablets and smaller devices */
 @media only screen and (max-width: 991px) {
+  .tm-shop-sidebar {
+    display: none !important;
+  }
+
   .shop-toolbar {
     flex-direction: column;
     align-items: flex-start;
